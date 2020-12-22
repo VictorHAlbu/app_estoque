@@ -1,0 +1,35 @@
+<div class="page-header">
+  <%= link_to new_receita_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Receita
+  <% end %>
+  <h1>Listing receitas</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Despesas</th>
+            <th>Nome</th>
+            <th>Descricao</th>
+            <th>Valor</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @receitas) do |receita| %>
+            <td><%= receita.despesas %></td>
+            <td><%= receita.nome %></td>
+            <td><%= receita.descricao %></td>
+            <td><%= receita.valor %></td>
+            <td><%= link_to 'Show', receita %></td>
+        <td><%= link_to 'Edit', edit_receita_path(receita) %></td>
+        <td><%= link_to 'Destroy', receita, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

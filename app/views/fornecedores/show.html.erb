@@ -1,0 +1,26 @@
+<div class="page-header">
+  <%= link_to fornecedores_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to edit_fornecedor_path(@fornecedor), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h1>Show fornecedor</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Nome:</dt>
+  <dd><%= @fornecedor.nome %></dd>
+
+  <dt>Telefone:</dt>
+  <dd><%= @fornecedor.telefone %></dd>
+
+  <dt>Email:</dt>
+  <dd><%= @fornecedor.email %></dd>
+
+  <dt>Site:</dt>
+  <dd><%= @fornecedor.site %></dd>
+
+</dl>

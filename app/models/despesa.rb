@@ -1,0 +1,2 @@
+class Despesa < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class Receita < ApplicationRecord
+end

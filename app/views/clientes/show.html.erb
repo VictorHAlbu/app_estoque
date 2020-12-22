@@ -1,0 +1,26 @@
+<div class="page-header">
+  <%= link_to clientes_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to edit_cliente_path(@cliente), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h1>Show cliente</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Nome:</dt>
+  <dd><%= @cliente.nome %></dd>
+
+  <dt>Telefone:</dt>
+  <dd><%= @cliente.telefone %></dd>
+
+  <dt>String:</dt>
+  <dd><%= @cliente.string %></dd>
+
+  <dt>Email:</dt>
+  <dd><%= @cliente.email %></dd>
+
+</dl>

@@ -1,0 +1,26 @@
+<div class="page-header">
+  <%= link_to receitas_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to edit_receita_path(@receita), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h1>Show receita</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Despesas:</dt>
+  <dd><%= @receita.despesas %></dd>
+
+  <dt>Nome:</dt>
+  <dd><%= @receita.nome %></dd>
+
+  <dt>Descricao:</dt>
+  <dd><%= @receita.descricao %></dd>
+
+  <dt>Valor:</dt>
+  <dd><%= @receita.valor %></dd>
+
+</dl>

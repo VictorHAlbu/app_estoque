@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  despesas: MyString
+  nome: MyString
+  descricao: MyString
+  valor: MyString
+
+two:
+  despesas: MyString
+  nome: MyString
+  descricao: MyString
+  valor: MyString

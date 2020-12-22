@@ -1,0 +1,35 @@
+<div class="page-header">
+  <%= link_to new_cliente_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Cliente
+  <% end %>
+  <h1>Listing clientes</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Nome</th>
+            <th>Telefone</th>
+            <th>Descrição</th>
+            <th>Email</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @clientes) do |cliente| %>
+            <td><%= cliente.nome %></td>
+            <td><%= cliente.telefone %></td>
+            <td><%= cliente.string %></td>
+            <td><%= cliente.email %></td>
+            <td><%= link_to 'Show', cliente %></td>
+        <td><%= link_to 'Edit', edit_cliente_path(cliente) %></td>
+        <td><%= link_to 'Destroy', cliente, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

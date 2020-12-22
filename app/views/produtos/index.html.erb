@@ -1,0 +1,39 @@
+<div class="page-header">
+  <%= link_to new_produto_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Produto
+  <% end %>
+  <h1>Listing produtos</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Nome</th>
+            <th>Descricao</th>
+            <th>Quantidade</th>
+            <th>Vecimento</th>
+            <th>Preco compra</th>
+            <th>Preco venda</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @produtos) do |produto| %>
+            <td><%= produto.nome %></td>
+            <td><%= produto.descricao %></td>
+            <td><%= produto.quantidade %></td>
+            <td><%= produto.vecimento %></td>
+            <td><%= produto.preco_compra %></td>
+            <td><%= produto.preco_venda %></td>
+            <td><%= link_to 'Show', produto %></td>
+        <td><%= link_to 'Edit', edit_produto_path(produto) %></td>
+        <td><%= link_to 'Destroy', produto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

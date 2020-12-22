@@ -1,0 +1,23 @@
+<div class="page-header">
+  <%= link_to despesas_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to edit_despesa_path(@despesa), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h1>Show despesa</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Nome:</dt>
+  <dd><%= @despesa.nome %></dd>
+
+  <dt>Descricao:</dt>
+  <dd><%= @despesa.descricao %></dd>
+
+  <dt>Valor:</dt>
+  <dd><%= @despesa.valor %></dd>
+
+</dl>

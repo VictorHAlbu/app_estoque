@@ -1,0 +1,56 @@
+<%= form_for(@produto, html: { class: "form-horizontal", role: "form" }) do |f| %>
+  <% if @produto.errors.any? %>
+    <div class="alert alert-danger alert-dismissable" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <h4><%= pluralize(@produto.errors.count, "error") %> prohibited this produto from being saved:</h4>
+
+      <ul>
+      <% @produto.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :nome, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :nome, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :descricao, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_area :descricao, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :quantidade, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.number_field :quantidade, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :vecimento, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.datetime_field :vecimento, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :preco_compra, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :preco_compra, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :preco_venda, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :preco_venda, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

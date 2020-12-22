@@ -1,0 +1,35 @@
+<div class="page-header">
+  <%= link_to new_fornecedor_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Fornecedor
+  <% end %>
+  <h1>Listing fornecedores</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Nome</th>
+            <th>Telefone</th>
+            <th>Email</th>
+            <th>Site</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @fornecedores) do |fornecedor| %>
+            <td><%= fornecedor.nome %></td>
+            <td><%= fornecedor.telefone %></td>
+            <td><%= fornecedor.email %></td>
+            <td><%= fornecedor.site %></td>
+            <td><%= link_to 'Show', fornecedor %></td>
+        <td><%= link_to 'Edit', edit_fornecedor_path(fornecedor) %></td>
+        <td><%= link_to 'Destroy', fornecedor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>
