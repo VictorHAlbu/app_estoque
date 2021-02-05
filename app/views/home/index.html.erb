@@ -1,6 +1,23 @@
 <h1>Bem Vindo</h1>
 <hr>
 
-<h3>Valor total de receitas: <%= @receitas%></h3>
-<h3>Valor total de Despesas: <%= @despesas%></h3>
-<h3>Valor total de Pedidos: <%= @pedidos%></h3>
+<h1><td>Resumo</td> </h1>
+<table class="table table-borderless table-dark">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Valor total de receitas:</th>
+        <th scope="col">Valor total de Despesas:</th>
+        <th scope="col">Valor total de Pedidos:</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td><%= @receitas%></h3></td>
+        <td><%= @despesas%></td>
+        <td><%= @pedidos%></td>
+      </tr>
+   
+    </tbody>
+  </table>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_24_163939) do
+ActiveRecord::Schema.define(version: 2021_02_05_195025) do
 
   create_table "clientes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "nome"
@@ -24,9 +24,9 @@ ActiveRecord::Schema.define(version: 2020_11_24_163939) do
   create_table "despesas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "nome"
     t.string "descricao"
-    t.string "valor"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.float "valor"
   end
 
   create_table "fornecedores", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -36,6 +36,16 @@ ActiveRecord::Schema.define(version: 2020_11_24_163939) do
     t.string "site"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "pedido_produtos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "pedido_id", null: false
+    t.bigint "produto_id", null: false
+    t.float "valor"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["pedido_id"], name: "index_pedido_produtos_on_pedido_id"
+    t.index ["produto_id"], name: "index_pedido_produtos_on_produto_id"
   end
 
   create_table "pedidos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -61,10 +71,12 @@ ActiveRecord::Schema.define(version: 2020_11_24_163939) do
     t.string "despesas"
     t.string "nome"
     t.string "descricao"
-    t.string "valor"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.float "valor"
   end
 
+  add_foreign_key "pedido_produtos", "pedidos"
+  add_foreign_key "pedido_produtos", "produtos"
   add_foreign_key "pedidos", "clientes"
 end
