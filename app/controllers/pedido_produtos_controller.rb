@@ -4,9 +4,9 @@ class PedidoProdutosController < ApplicationController
   # GET /pedido_produtos
   # GET /pedido_produtos.json
   def index
-    @pedido_produtos = PedidoProduto.all
+    @pedido_produtos = PedidoProduto.where(pedido_id: @pedido.id )
   end
-
+ 
   # GET /pedido_produtos/1
   # GET /pedido_produtos/1.json
   def show
@@ -62,7 +62,6 @@ class PedidoProdutosController < ApplicationController
   end
 
   private
-
   def set_pedido
     @pedido = Pedido.find(params[:pedido_id])
   end
