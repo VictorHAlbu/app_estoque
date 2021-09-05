@@ -1,28 +1,34 @@
 class ProdutosController < ApplicationController
   before_action :set_produto, only: [:show, :edit, :update, :destroy]
 
-  # GET /produtos
-  # GET /produtos.json
+ 
   def index
     @produtos = Produto.all
   end
 
-  # GET /produtos/1
-  # GET /produtos/1.json
+  
   def show
   end
 
-  # GET /produtos/new
+
   def new
     @produto = Produto.new
   end
 
-  # GET /produtos/1/edit
+ 
   def edit
   end
 
-  # POST /produtos
-  # POST /produtos.json
+  def import
+    @import_excel = ImportProductExcel.new(params[:file])
+    if @import_excel.import
+       redirect_to produtos_url, notice: 'Produto Importado' 
+    else
+      redirect_to produtos_url, notice: 'Erro ao Importar '
+    end
+  end
+
+ 
   def create
     @produto = Produto.new(produto_params)
 
@@ -37,8 +43,7 @@ class ProdutosController < ApplicationController
     end
   end
 
-  # PATCH/PUT /produtos/1
-  # PATCH/PUT /produtos/1.json
+ 
   def update
     respond_to do |format|
       if @produto.update(produto_params)
@@ -51,8 +56,7 @@ class ProdutosController < ApplicationController
     end
   end
 
-  # DELETE /produtos/1
-  # DELETE /produtos/1.json
+ 
   def destroy
     @produto.destroy
     respond_to do |format|
@@ -62,12 +66,12 @@ class ProdutosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+   
     def set_produto
       @produto = Produto.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
+   
     def produto_params
       params.require(:produto).permit(:nome, :descricao, :quantidade, :vecimento, :preco_compra, :preco_venda)
     end

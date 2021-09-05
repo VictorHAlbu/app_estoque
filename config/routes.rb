@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   resources :receitas
   resources :despesas
   resources :fornecedores
-  resources :produtos
+  resources :produtos do
+    collection { post :import }
+  end
   resources :clientes
   root to:'home#index'
 end
