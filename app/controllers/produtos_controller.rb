@@ -22,7 +22,7 @@ class ProdutosController < ApplicationController
   def import
     @import_excel = ImportProductExcel.new(params[:file])
     if @import_excel.import
-       redirect_to produtos_url, notice: 'Produto Importado' 
+       redirect_to produtos_url, notice: 'Arquivo Importado' 
     else
       redirect_to produtos_url, notice: 'Erro ao Importar '
     end
