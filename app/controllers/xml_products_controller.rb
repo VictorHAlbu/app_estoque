@@ -1,7 +1,12 @@
-class XmlProductController < ApplicationController
+class XmlProductsController < ApplicationController
+
+  def index
+    
+  end
+
   def create
 		begin
-			Produto.call(params[:file])
+			@nefe = XmlProduct.import(params[:file])
 			redirect_to purchases_path, notice: "XML de Produto Importado"
 		rescue => error
 			redirect_to purchases_path, alert: error.message

@@ -12,5 +12,7 @@ Rails.application.routes.draw do
     collection { post :import }
   end
   resources :clientes
+  resources :xml_products
+
   root to:'home#index'
 end

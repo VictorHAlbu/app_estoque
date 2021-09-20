@@ -1,14 +1,14 @@
 class XmlProduct
   class_attribute :file, :base_structure, :params
 
-  def initialize(file, params)
+  def initialize(file)
     self.file = file
     self.product_attributes = []
-    self.params = params
   end
 
-  def call
+  def import
     read_and_validate_xml_file
+    debugger
     create_or_update_a_vendor
   end
 
