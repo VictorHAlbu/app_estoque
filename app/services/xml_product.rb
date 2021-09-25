@@ -1,15 +1,14 @@
 class XmlProduct
-  class_attribute :file, :base_structure, :params
+  attr_accessor :file, :base_structure, :produto_attributes, :produto
 
   def initialize(file)
     self.file = file
-    self.product_attributes = []
+    self.produto_attributes = []
   end
 
   def import
     read_and_validate_xml_file
-    debugger
-    create_or_update_a_vendor
+    create_product
   end
 
   private
@@ -24,46 +23,25 @@ class XmlProduct
     
     raise 'O arquivo importado não é uma nota fiscal' if self.base_structure.blank?
   end
-  
-  #Cadastra ou altera os dados do fornecedor
-  # def create_or_update_a_vendor
-  #   vendor = self.base_structure[:emit]
 
-  #   #selecionando ou criando um novo fornecedor
-  #   self.client = self.account.clients.where(category: [:vendor, :both]).find_or_initialize_by(document: vendor[:cnpj])
-  
-  #   self.client.assign_attributes({
-  #     name: vendor[:x_nome],
-  #     author: self.author,
-  #     category: self.client.new_record? ? :vendor : self.client.category,
-  #     contact_attributes: {
-  #       phone: vendor[:ender_emit][:fone],
-  #       zipcode: vendor[:ender_emit][:cep],
-  #       address: vendor[:ender_emit][:x_lgr],
-  #       complement: vendor[:ender_emit][:x_cpl],
-  #       number: vendor[:ender_emit][:nro],
-  #       district: vendor[:ender_emit][:x_bairro],
-  #       city: vendor[:ender_emit][:x_mun],
-  #       state: vendor[:ender_emit][:uf],
-  #       country: 'BR',
-  #     }
-  #   })
-  #   self.client.save!
+  def create_product
+    produtos = self.base_structure[:det]
+    produtos.each do |product_to_save|
+      produto = Produto.new
+      produto.preco_compra = product_to_save[:prod][:v_prod].to_f
+      produto.quantidade = product_to_save[:prod][:q_com]
+      produto.nome = product_to_save[:prod][:x_prod]
+      produto.save!
+    end
+  end
+
+  # def find_or_create_a_product(product_attributes)
+  #   produto.assign_attributes({
+  #     preco_compra: produto_attributes[:v_prod].to_f,
+  #     quantidade: produto_attributes[:q_com],
+  #     nome: produto_attributes[:x_prod]
+  #   })    
+  #   produto.save!
   # end
-
-  # def create_a_product_list
-  #   products = self.base_structure[:det]
-  #   method = products.is_a?(Array) ? 'each' : 'tap'
-  #   products.send(method) do |product|
-  #     #adicionar o produto na lista de produtos
-  #     self.product_attributes.push({
-  #       product: find_or_create_a_product(product[:prod]),
-  #       amount: product[:prod][:v_prod].to_f,
-  #       quantity: product[:prod][:q_com],
-  #     })
-      
-  #   end
-  # end 
-
  
 end

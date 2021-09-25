@@ -20,7 +20,6 @@ class ImportProductExcel
   def create_objects
     headers = path.row(1)
     @path.each_with_index do |row, idx|
-      debugger
       next if idx == 0 
       @parse_data = Hash[[headers, row].transpose]
       
