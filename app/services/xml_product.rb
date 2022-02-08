@@ -26,11 +26,11 @@ class XmlProduct
 
   def create_product
     produtos = self.base_structure[:det]
-    produtos.each do |product_to_save|
+    produtos.each do |key, value|
       produto = Produto.new
-      produto.preco_compra = product_to_save[:prod][:v_prod].to_f
-      produto.quantidade = product_to_save[:prod][:q_com]
-      produto.nome = product_to_save[:prod][:x_prod]
+      produto.preco_compra = key[:prod][:v_prod].to_f
+      produto.quantidade = key[:prod][:q_com]
+      produto.nome = key[:prod][:x_prod]
       produto.save!
     end
   end

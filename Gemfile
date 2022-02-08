@@ -25,8 +25,13 @@ gem 'jquery-rails'
 gem 'will_paginate', '~> 3.1.0'
 gem 'record_tag_helper', '~> 1.0'
 gem 'roo'
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
+
+gem 'sidekiq'
+gem 'redis', '~> 4.0'
+gem 'redis-namespace'
+gem 'redis-rails'
+
+gem 'dotenv-rails', groups: [:development, :test]
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

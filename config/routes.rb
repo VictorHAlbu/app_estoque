@@ -1,7 +1,13 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   scope path_names: { new: "novo", edit: "editar" } do
     # seus resources
   end
+
+  #sidekiq
+  mount Sidekiq::Web => '/sidekiq'
+
   resources :pedidos do 
     resources :pedido_produtos
   end
